@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-local-import-preview"
+description = "Enables the local_import_preview command without any pre-configured scope."
+commands.allow = ["local_import_preview"]
+
+[[permission]]
+identifier = "deny-local-import-preview"
+description = "Denies the local_import_preview command without any pre-configured scope."
+commands.deny = ["local_import_preview"]

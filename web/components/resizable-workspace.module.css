@@ -1,0 +1,13 @@
+.grid:global(.focus-split) { grid-template-columns: minmax(0, var(--task-share, 38fr)) 8px minmax(0, var(--tools-share, 62fr)); }
+.grid > :global(.workspace-rail) { border-left: 0; }
+.divider { align-self: stretch; cursor: col-resize; position: relative; touch-action: none; z-index: 2; }
+.divider::before { background: var(--border); content: ""; inset: 0 auto 0 3px; position: absolute; width: 1px; }
+.divider::after { background: #bdbdbd; border-radius: 3px; content: ""; height: 32px; left: 2px; position: absolute; top: calc(50% - 16px); width: 3px; }
+.divider:hover::before, .divider:focus-visible::before, .dragging .divider::before { background: #757575; width: 3px; left: 2px; }
+.divider:focus-visible { outline: 2px solid var(--text); outline-offset: -2px; }
+.divider[hidden] { display: none; }
+.dragging, .dragging * { cursor: col-resize !important; user-select: none !important; }
+@media (max-width: 790px) {
+  .grid:global(.focus-split) { grid-template-columns: minmax(0, 1fr); }
+  .divider { display: none; }
+}

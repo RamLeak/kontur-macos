@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-local-export-bundle"
+description = "Enables the local_export_bundle command without any pre-configured scope."
+commands.allow = ["local_export_bundle"]
+
+[[permission]]
+identifier = "deny-local-export-bundle"
+description = "Denies the local_export_bundle command without any pre-configured scope."
+commands.deny = ["local_export_bundle"]

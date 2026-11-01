@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Контур Локальный",
+  "version": "0.1.0",
+  "identifier": "app.kontur.offline.desktop",
+  "build": {
+    "frontendDist": "../full/frontend/out"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [],
+    "security": {
+      "capabilities": ["main-local"],
+      "csp": "default-src 'none'; script-src 'self' blob: 'wasm-unsafe-eval' 'sha256-GsegJgFGdofTTNSqi5KXyhYOu//W3jdsS9MfVWzdpEM='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' blob: ipc: http://ipc.localhost; worker-src blob:; base-uri 'none'; form-action 'none'; frame-src 'self'; object-src 'none'",
+      "freezePrototype": true
+    }
+  },
+  "bundle": {
+    "active": false,
+    "targets": ["nsis"],
+    "icon": ["icons/icon.ico"],
+    "shortDescription": "Локальная работа с заданиями и прогрессом Контура",
+    "windows": {
+      "webviewInstallMode": { "type": "skip" },
+      "nsis": { "installMode": "currentUser", "displayLanguageSelector": false }
+    }
+  }
+}

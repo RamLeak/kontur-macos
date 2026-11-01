@@ -1,0 +1,16 @@
+.tools {
+  display: grid;
+  gap: 7px;
+  margin-top: 7px;
+  width: 100%;
+}
+
+.tools > button {
+  justify-self: start;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 11px;
+}
+

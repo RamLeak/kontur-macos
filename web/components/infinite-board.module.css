@@ -1,0 +1,518 @@
+.shell {
+  color: var(--text, #1d1d1f);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 340px;
+}
+
+.toolbar {
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #dfe1e6);
+  border-radius: 14px;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 1px;
+  overflow: visible;
+}
+
+.toolRow,
+.propertyRow {
+  align-items: center;
+  display: flex;
+  gap: 6px;
+  min-height: 58px;
+  padding: 7px 10px;
+}
+
+.propertyRow {
+  border-top: 1px solid var(--border, #ececef);
+  min-height: 58px;
+}
+
+.toolGroup,
+.historyTools,
+.zoomTools,
+.backgroundControl {
+  align-items: center;
+  display: flex;
+  gap: 3px;
+}
+
+.toolGroup {
+  flex-wrap: wrap;
+}
+
+.toolButton {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--muted, #68686d);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  gap: 7px;
+  height: 44px;
+  justify-content: center;
+  min-width: 44px;
+  padding: 0 9px;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+  width: auto;
+}
+
+.toolButton:hover:not(:disabled),
+.propertyButton:hover:not(:disabled),
+.backgroundButton:hover:not(:disabled),
+.clearButton:hover:not(:disabled) {
+  background: var(--surface-strong, #f5f5f7);
+  color: var(--text, #1d1d1f);
+}
+
+.toolButton:focus-visible,
+.propertyButton:focus-visible,
+.backgroundButton:focus-visible,
+.clearButton:focus-visible,
+.swatch:focus-visible,
+.thicknessRange:focus-visible,
+.opacityRange:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.toolButton:disabled,
+.propertyButton:disabled,
+.backgroundButton:disabled,
+.clearButton:disabled,
+.swatch:disabled,
+.thicknessRange:disabled,
+.opacityRange:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.selected {
+  background: var(--primary-accent, #0066cc);
+  border-color: var(--primary-accent, #0066cc);
+  color: #fff;
+}
+
+.toolButton.selected,
+.toolButton.selected:hover:not(:disabled) {
+  background: var(--primary-accent, #0066cc);
+  border-color: var(--primary-accent, #0066cc);
+  color: #fff;
+}
+
+.toolLabel {
+  color: currentColor;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.divider {
+  background: #e6e7eb;
+  height: 28px;
+  margin: 0 3px;
+  width: 1px;
+}
+
+.zoomTools {
+  gap: 2px;
+  margin-left: auto;
+}
+
+.zoomLabel {
+  color: var(--muted, #68686d);
+  font: 600 12px/1 var(--font-mono, ui-monospace, monospace);
+  min-width: 45px;
+  text-align: center;
+}
+
+.propertyRow {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.colorControl {
+  position: relative;
+}
+
+.propertyButton,
+.backgroundButton,
+.clearButton {
+  align-items: center;
+  background: var(--surface-strong, #f5f5f7);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--muted, #68686d);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  gap: 8px;
+  height: 44px;
+  padding: 0 12px;
+}
+
+.currentSwatch,
+.swatch {
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.currentSwatch {
+  box-shadow: 0 0 0 1px rgba(29, 29, 31, .17);
+  height: 18px;
+  width: 18px;
+}
+
+.colorPopover {
+  align-items: center;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #dfe1e6);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(29, 29, 31, .14);
+  display: flex;
+  gap: 7px;
+  left: 0;
+  padding: 8px;
+  position: absolute;
+  top: calc(100% + 6px);
+  z-index: 4;
+}
+
+.swatch {
+  background: var(--surface, #fff);
+  border: 2px solid var(--surface, #fff);
+  box-shadow: 0 0 0 1px var(--border, #d2d3d6);
+  cursor: pointer;
+  height: 26px;
+  padding: 0;
+  width: 26px;
+}
+
+.swatch:hover:not(:disabled) {
+  box-shadow: 0 0 0 2px #a8aab0;
+}
+
+.swatchSelected {
+  box-shadow: 0 0 0 2px #0066cc;
+}
+
+.thicknessControl {
+  align-items: center;
+  background: var(--surface-strong, #f5f5f7);
+  border-radius: 10px;
+  color: var(--muted, #68686d);
+  display: inline-flex;
+  font-size: 13px;
+  gap: 8px;
+  height: 44px;
+  padding: 0 10px 0 12px;
+}
+
+.thicknessRange,
+.opacityRange {
+  accent-color: #0066cc;
+  min-height: 32px;
+  width: 100px;
+}
+
+.thicknessOutput,
+.opacityOutput {
+  color: var(--text, #1d1d1f);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  min-width: 35px;
+  text-align: right;
+}
+
+.opacityControl {
+  align-items: center;
+  background: var(--surface-strong, #f5f5f7);
+  border-radius: 10px;
+  color: var(--muted, #68686d);
+  display: inline-flex;
+  font-size: 13px;
+  gap: 8px;
+  height: 44px;
+  padding: 0 10px 0 12px;
+}
+
+.backgroundControl {
+  background: var(--surface-strong, #f5f5f7);
+  border-radius: 12px;
+  gap: 2px;
+  padding: 3px;
+}
+
+.backgroundButton {
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted, #68686d);
+  font-weight: 500;
+  height: 38px;
+  padding: 0 11px;
+}
+
+.backgroundSelected {
+  background: var(--surface, #fff);
+  border-color: var(--border, #dfe1e6);
+  box-shadow: 0 1px 3px rgba(29, 29, 31, .08);
+  color: var(--text, #1d1d1f);
+  font-weight: 650;
+}
+
+.clearButton {
+  background: transparent;
+  color: var(--muted, #68686d);
+  margin-left: auto;
+}
+
+.clearConfirm {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #dfe1e6;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(29, 29, 31, .1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 12px;
+  margin-top: 8px;
+  padding: 12px 14px;
+}
+
+.clearConfirm strong {
+  color: #1d1d1f;
+  font-size: 13px;
+}
+
+.clearConfirm span {
+  color: #68686d;
+  font-size: 12px;
+}
+
+.clearConfirmActions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.clearCancel,
+.clearAccept,
+.imageStatusError button {
+  border: 1px solid #dfe1e6;
+  border-radius: 9px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  min-height: 36px;
+  padding: 0 11px;
+}
+
+.clearCancel:focus-visible,
+.clearAccept:focus-visible,
+.imageStatusError button:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.clearCancel {
+  background: #f5f5f7;
+  color: #68686d;
+}
+
+.clearAccept {
+  background: #0066cc;
+  border-color: #0066cc;
+  color: #fff;
+}
+
+.imageStatus,
+.imageStatusError {
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  gap: 8px;
+  margin: 8px 2px 0;
+}
+
+.imageStatus {
+  color: #68686d;
+}
+
+.imageStatusError {
+  color: #b42318;
+}
+
+.imageStatusError button {
+  background: #fff;
+  color: #0066cc;
+  min-height: 32px;
+}
+
+.stage {
+  --board-paper: #FFFFFF;
+  --board-rule: #D1D1D6;
+  background: var(--board-paper);
+  border: 1px solid var(--border, #e2e3e7);
+  border-radius: 12px;
+  flex: 1;
+  margin-top: 8px;
+  min-height: 180px;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  touch-action: none;
+}
+
+.stage:focus-visible {
+  border-color: #7db3e8;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, .14);
+}
+
+.stagePan {
+  cursor: grab;
+}
+
+.stagePan:active {
+  cursor: grabbing;
+}
+
+.stageText {
+  cursor: text;
+}
+
+.stageEraser {
+  cursor: crosshair;
+}
+
+.canvas {
+  display: block;
+  height: 100%;
+  touch-action: none;
+  width: 100%;
+}
+
+.textLayer {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.textObject {
+  background: color-mix(in srgb, var(--surface, #fff) 92%, transparent);
+  color: var(--text, #1d1d1f);
+  font-size: 14px;
+  padding: 2px 4px;
+  position: absolute;
+  white-space: pre;
+}
+
+.textEditor {
+  position: absolute;
+  z-index: 2;
+}
+
+.textEditor input {
+  border: 1px solid #aeb1b8;
+  border-radius: 8px;
+  box-shadow: 0 5px 18px rgba(29, 29, 31, .12);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.25;
+  outline: 0;
+  padding: 8px 10px;
+}
+
+.status {
+  align-items: center;
+  color: #b42318;
+  display: flex;
+  font-size: 12px;
+  gap: 7px;
+  min-height: 34px;
+  padding: 3px 2px 0;
+}
+
+.statusError {
+  border-top: 1px solid #f1d6d3;
+}
+
+.statusDot {
+  background: #c2413b;
+  border-radius: 50%;
+  display: inline-block;
+  height: 7px;
+  width: 7px;
+}
+
+.error {
+  color: #68686d;
+  margin-left: 2px;
+}
+
+@media (max-width: 900px) {
+  .toolRow,
+  .propertyRow {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .zoomTools {
+    margin-left: 0;
+  }
+
+  .propertyRow {
+    padding-bottom: 9px;
+  }
+}
+
+@media (max-width: 560px) {
+  .shell {
+    min-height: 280px;
+  }
+
+  .toolRow,
+  .propertyRow {
+    gap: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .toolButton {
+    height: 44px;
+    min-width: 44px;
+    width: auto;
+  }
+
+  .toolLabel {
+    display: none;
+  }
+
+  .backgroundButton {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .clearButton {
+    margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toolButton,
+  .propertyButton,
+  .backgroundButton,
+  .clearButton {
+    transition: none;
+  }
+}
+

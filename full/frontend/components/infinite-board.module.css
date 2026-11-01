@@ -1,0 +1,471 @@
+.shell {
+  color: var(--text, #1d1d1f);
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 340px;
+  min-width: 0;
+}
+.workspace {
+  flex: 1;
+  isolation: isolate;
+  min-height: 220px;
+  min-width: 0;
+  position: relative;
+}
+/* Chrome is outside the clipped paper: rounded corners never crop its panels. */
+.shell .toolbar {
+  align-items: flex-start;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  inset: 12px;
+  padding: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 5;
+}
+.toolRow,
+.propertyRow,
+.historyTools,
+.zoomTools,
+.boardActions > .toolButton,
+.boardPopover {
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #dfe1e6);
+  border-radius: 14px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, .12);
+  box-sizing: border-box;
+}
+.toolRow {
+  align-items: center;
+  display: flex;
+  flex: 0 0 64px;
+  flex-direction: column;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 5px;
+  pointer-events: auto;
+  scrollbar-width: thin;
+}
+.toolRow::-webkit-scrollbar {
+  width: 4px;
+}
+.toolGroup {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.shell .toolButton {
+  align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--text, #1d1d1f);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  height: 44px;
+  justify-content: center;
+  min-width: 44px;
+  padding: 0;
+  transition: background-color .15s ease, color .15s ease;
+  width: 44px;
+}
+.shell .toolButton:hover:not(:disabled),
+.backgroundButton:hover:not(:disabled),
+.shell .clearButton:hover:not(:disabled) {
+  background: var(--surface-strong, #f0f1f3);
+  color: var(--text, #1d1d1f);
+}
+.shell .toolButton.selected,
+.shell .toolButton.selected:hover:not(:disabled) {
+  background: var(--primary-accent, #0066cc);
+  border-color: var(--primary-accent, #0066cc);
+  box-shadow: none;
+  color: #fff;
+}
+.toolLabel {
+  display: none;
+}
+.divider {
+  background: var(--border, #dfe1e6);
+  flex: 0 0 1px;
+  margin: 5px 0;
+  width: 30px;
+}
+.currentSwatch {
+  border: 2px solid var(--surface, #fff);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--border, #aeb1b8);
+  height: 23px;
+  width: 23px;
+}
+.propertyRow {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 220px;
+  gap: 14px;
+  max-height: 100%;
+  max-width: calc(100% - 72px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 10px 12px 14px;
+  pointer-events: auto;
+}
+.panelHeading {
+  align-items: center;
+  display: flex;
+  gap: 6px;
+  justify-content: space-between;
+}
+.panelHeading strong {
+  font-size: 13px;
+  line-height: 1.3;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.controlLabel {
+  color: var(--text, #1d1d1f);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.colorControl {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.colorPopover {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding: 2px;
+}
+.swatch {
+  border: 2px solid var(--surface, #fff);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--border, #aeb1b8);
+  cursor: pointer;
+  height: 28px;
+  padding: 0;
+  width: 28px;
+}
+.swatch:hover:not(:disabled) {
+  box-shadow: 0 0 0 2px var(--muted, #68686d);
+}
+.swatchSelected {
+  box-shadow: 0 0 0 2px var(--primary-accent, #0066cc);
+}
+.thicknessControl,
+.opacityControl {
+  align-items: center;
+  color: var(--text, #1d1d1f);
+  display: grid;
+  font-size: 12px;
+  gap: 5px 8px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+.thicknessRange,
+.opacityRange {
+  accent-color: var(--primary-accent, #0066cc);
+  grid-column: 1 / -1;
+  margin: 0;
+  min-height: 32px;
+  min-width: 0;
+  width: 100%;
+}
+.thicknessOutput,
+.opacityOutput {
+  color: var(--muted, #68686d);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.boardActions {
+  bottom: 12px;
+  pointer-events: none;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 44px;
+  z-index: 6;
+}
+.boardActions > .toolButton {
+  border-color: var(--border, #dfe1e6);
+  pointer-events: auto;
+}
+.boardPopover {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: calc(100% - 52px);
+  max-width: calc(100cqw - 24px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 14px;
+  pointer-events: auto;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  width: 230px;
+}
+.backgroundControl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.backgroundButton {
+  background: var(--surface-strong, #f0f1f3);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--text, #1d1d1f);
+  cursor: pointer;
+  flex: 1 0 auto;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  min-height: 40px;
+  padding: 0 9px;
+}
+.backgroundButton.backgroundSelected {
+  background: var(--primary-accent, #0066cc);
+  border-color: var(--primary-accent, #0066cc);
+  color: #fff;
+}
+.shell .clearButton {
+  background: transparent;
+  border: 1px solid var(--border, #dfe1e6);
+  border-radius: 9px;
+  color: var(--text, #1d1d1f);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  margin: 0;
+  min-height: 44px;
+  padding: 8px;
+  width: 100%;
+}
+.navigationDock {
+  align-items: center;
+  bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  max-width: calc(100% - 24px);
+  position: absolute;
+  right: 12px;
+  z-index: 4;
+}
+.historyTools,
+.zoomTools {
+  align-items: center;
+  display: flex;
+  gap: 2px;
+  padding: 4px;
+}
+.shell .zoomLabel {
+  color: var(--text, #1d1d1f);
+  flex: 0 0 42px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  min-width: 42px;
+  text-align: center;
+}
+.shell button:focus-visible,
+.thicknessRange:focus-visible,
+.opacityRange:focus-visible {
+  outline: 2px solid var(--primary-accent, #0066cc);
+  outline-offset: 2px;
+}
+.shell .toolButton:disabled,
+.backgroundButton:disabled,
+.shell .clearButton:disabled,
+.swatch:disabled,
+.thicknessRange:disabled,
+.opacityRange:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+.workspace .stage {
+  --board-paper: #FFFFFF;
+  --board-rule: #D1D1D6;
+  background: var(--board-paper);
+  border: 1px solid var(--border, #dfe1e6);
+  border-radius: 14px;
+  inset: 0;
+  margin: 0;
+  min-height: 0;
+  outline: none;
+  overflow: hidden;
+  position: absolute;
+  touch-action: none;
+}
+.stage:focus-visible {
+  border-color: var(--primary-accent, #0066cc);
+  box-shadow: 0 0 0 2px var(--primary-accent, #0066cc);
+}
+.stagePan {
+  cursor: grab;
+}
+.stagePan:active {
+  cursor: grabbing;
+}
+.stageText {
+  cursor: text;
+}
+.workspace .stage.stageEraser {
+  cursor: none;
+}
+.canvas {
+  display: block;
+  height: 100%;
+  touch-action: none;
+  width: 100%;
+}
+.eraserCursor {
+  background: rgba(0, 102, 204, .12);
+  border: 1px solid rgba(0, 102, 204, .72);
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: none;
+  height: 44px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  z-index: 3;
+}
+.eraserCursorVisible {
+  display: block;
+}
+.textLayer {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+.textObject {
+  background: color-mix(in srgb, var(--surface, #fff) 92%, transparent);
+  color: var(--text, #1d1d1f);
+  font-size: 14px;
+  padding: 2px 4px;
+  position: absolute;
+  white-space: pre;
+}
+.textEditor {
+  position: absolute;
+  z-index: 2;
+}
+.textEditor input {
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #aeb1b8);
+  border-radius: 8px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .12);
+  color: var(--text, #1d1d1f);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.25;
+  outline: 0;
+  padding: 8px 10px;
+}
+.status,
+.imageStatus,
+.imageStatusError {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  font-size: 12px;
+  gap: 8px;
+  line-height: 1.5;
+  margin: 8px 2px;
+}
+.status {
+  color: var(--text, #1d1d1f);
+}
+.statusError,
+.imageStatusError {
+  color: var(--danger, #b42318);
+}
+.statusDot {
+  background: var(--danger, #b42318);
+  border-radius: 50%;
+  display: inline-block;
+  height: 7px;
+  width: 7px;
+}
+.imageStatus {
+  color: var(--muted, #68686d);
+}
+.error {
+  overflow-wrap: anywhere;
+}
+.imageStatusError button {
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #dfe1e6);
+  border-radius: 8px;
+  color: var(--text, #1d1d1f);
+  cursor: pointer;
+  min-height: 36px;
+  padding: 0 10px;
+}
+@container (max-width: 460px) {
+  .navigationDock {
+    align-items: flex-end;
+    flex-direction: column;
+  }
+  .workspace[data-brush-open="true"] .boardActions {
+    visibility: hidden;
+  }
+  .propertyRow {
+    inset: 0 0 auto;
+    max-width: none;
+    position: absolute;
+    width: auto;
+    z-index: 2;
+  }
+}
+@container (max-width: 280px) {
+  .shell .toolbar {
+    bottom: 120px;
+  }
+  .zoomTools {
+    display: grid;
+    grid-template-columns: repeat(3, 44px);
+  }
+  .shell .zoomLabel {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    min-height: 20px;
+  }
+  .boardPopover {
+    padding: 10px;
+  }
+}
+@media (max-width: 560px) {
+  .shell {
+    min-height: 280px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shell .toolButton {
+    transition: none;
+  }
+}

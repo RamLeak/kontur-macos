@@ -1,0 +1,93 @@
+.taskImages {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.heading {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.heading strong {
+  font-size: 13px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  min-width: 0;
+}
+
+.card {
+  background: var(--surface-strong, var(--surface));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  transition: border-color .14s ease, box-shadow .14s ease;
+}
+
+.card:focus-within,
+.card:hover {
+  border-color: var(--muted-light, #8e8e93);
+}
+
+.image {
+  background: var(--surface);
+  display: block;
+  height: auto;
+  max-height: 520px;
+  min-height: 120px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.placeholder {
+  align-items: center;
+  aspect-ratio: 4 / 3;
+  background: var(--surface);
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.45;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  padding: 20px;
+  text-align: center;
+}
+
+.placeholder p {
+  margin: 0;
+}
+
+.placeholder button {
+  margin-top: 2px;
+}
+
+@media (max-width: 470px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

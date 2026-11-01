@@ -1,0 +1,46 @@
+.page { display: flex; flex: 1; flex-direction: column; height: 100%; min-height: 0; min-width: 0; overflow: hidden; }
+.header { align-items: center; display: flex; flex: 0 0 58px; gap: 18px; justify-content: space-between; min-width: 0; padding: 0 24px; }
+.title { align-items: center; display: flex; gap: 12px; min-width: 0; font-size: 15px; font-weight: 600; }
+.title > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.content { display: flex; flex: 1; flex-direction: column; min-height: 0; min-width: 0; overflow: auto; scrollbar-width: thin; }
+.welcome { margin: auto auto 62px; max-width: 820px; padding: 24px 30px 0; text-align: center; width: 100%; }
+.emblem { color: #b5b5b5; margin-bottom: 32px; }
+.welcome h1 { color: #262626; font-size: clamp(25px, 2vw, 28px); font-weight: 400; letter-spacing: -.018em; line-height: 1.35; margin: 0 auto; max-width: 800px; overflow-wrap: anywhere; }
+.projectName { border-bottom: 1px dotted #a8a8a8; }
+.suggestions { display: grid; gap: 12px; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 26px auto 0; max-width: 710px; text-align: left; }
+.card { align-items: flex-start; background: white; border: 1px solid #eeeeee; border-radius: 16px; box-shadow: 0 2px 4px #00000003; cursor: pointer; display: flex; flex-direction: column; gap: 20px; justify-content: space-between; min-height: 130px; min-width: 0; padding: 16px; text-align: left; transition: background .15s ease, border-color .15s ease; }
+.card:hover { background: #fafafa; border-color: #d4d4d4; }
+.card > svg { color: #91a8d9; }
+.card:nth-child(2) > svg { color: #b29dcf; }
+.card:nth-child(3) > svg { color: #87b293; }
+.card:nth-child(4) > svg { color: #cb9c83; }
+.card > span { color: #737373; font-size: 13px; font-weight: 500; line-height: 1.6; }
+.composeArea { flex: 0 0 auto; margin: 0 auto; max-width: 790px; min-width: 0; padding: 0 24px 6px; width: 100%; }
+.composeArea :global(.composer-wrap) { background: transparent; padding: 0 0 12px; }
+.projectContext { align-items: center; background: #f5f5f5; border-radius: 15px 15px 0 0; color: #505050; display: flex; font-size: 13px; gap: 9px; margin: 0 14px -12px; min-height: 47px; padding: 8px 16px 18px; }
+.projectContext > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.messages { margin: 0 auto; max-width: 830px; padding: 30px 30px 48px; width: 100%; }
+.message { font-size: 15px; line-height: 1.7; margin-bottom: 32px; overflow-wrap: anywhere; }
+.message p { white-space: pre-wrap; }
+.message small { color: var(--muted); display: block; font-size: 11px; margin-top: 8px; }
+.userMessage { background: #f3f3f3; border-radius: 20px; margin-left: auto; max-width: 85%; padding: 12px 18px; width: fit-content; }
+.assistantMessage { padding: 0 2px; }
+.empty { color: var(--muted); font-size: 14px; padding: 22px 0; }
+.notice { align-items: center; background: #fff8f0; border-radius: 10px; display: flex; flex-wrap: wrap; font-size: 13px; gap: 12px; margin: 12px 24px; min-width: 0; padding: 12px 16px; }
+.notice p { min-width: 0; overflow-wrap: anywhere; }
+@media (max-height: 700px) and (min-width: 791px) {
+  .welcome { margin-bottom: 30px; padding-top: 12px; padding-bottom: 0; }
+  .emblem { margin-bottom: 15px; height: 42px !important; width: 42px !important; }
+  .suggestions { margin-top: 26px; }
+  .card { min-height: 120px; padding: 15px; }
+}
+@media (max-width: 790px) {
+  .header { flex-basis: 44px; padding: 0 16px; }
+  .welcome { margin: auto; padding: 20px 20px 32px; }
+  .suggestions { gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 26px; }
+  .card { min-height: 110px; padding: 14px; }
+  .card > span { font-size: 13px; }
+  .composeArea { padding: 0 12px 2px; }
+  .messages { padding: 18px 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } }

@@ -1,0 +1,36 @@
+.startup {
+  align-items: center;
+  background: var(--canvas);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 32px;
+  text-align: center;
+}
+.startup h1 { font-size: 26px; letter-spacing: -.04em; margin: 0 0 10px; }
+.startup > span:last-of-type { color: var(--muted); line-height: 1.6; max-width: 440px; }
+.mark {
+  align-items: center;
+  background: var(--accent);
+  border-radius: 19px;
+  color: var(--canvas);
+  display: inline-flex;
+  font-size: 32px;
+  font-weight: 650;
+  height: 72px;
+  justify-content: center;
+  width: 72px;
+}
+.spinner {
+  animation: turn 1s linear infinite;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  border-top-color: var(--accent);
+  height: 22px;
+  width: 22px;
+}
+@keyframes turn { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }

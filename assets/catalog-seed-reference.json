@@ -1,0 +1,13 @@
+{
+  "kind": "kontur-macos-external-catalog-reference-v1",
+  "catalogSchemaVersion": 2,
+  "offlineReady": true,
+  "complete": false,
+  "originalWarningCount": 30,
+  "approvedReplacementCount": 1,
+  "counts": {"tasks": 6495, "revisions": 9176, "selection": 8248, "links": 5487, "assets": 3773},
+  "files": [
+    {"name": "catalog.sqlite3", "bytes": 2632617984, "sha256": "d37628fb23b7253564e4a7eeea84e1d5eb02900a9bbed921d447e4bddd4b01ab"},
+    {"name": "recovery-provenance.json", "bytes": 9508, "sha256": "28a968e5554cd9750326c50266c3e8a5e154c961f19e19db171f2909e37a916a"}
+  ]
+}

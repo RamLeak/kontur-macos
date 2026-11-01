@@ -1,0 +1,48 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.message {
+  position: absolute;
+  top: clamp(76px, 14vh, 124px);
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100% - 32px);
+  padding: 12px 22px;
+  border: 1px solid #79c49b;
+  border-radius: 22px;
+  background: #e5f8ec;
+  color: #175b3a;
+  box-shadow: 0 6px 24px rgb(23 91 58 / 12%);
+  font-size: 18px;
+  font-weight: 650;
+  text-align: center;
+}
+
+.burst { position: absolute; }
+.spark {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--spark-color);
+  opacity: 0;
+  animation: burst 1200ms cubic-bezier(.14, .65, .25, 1) var(--spark-delay) both;
+}
+
+@keyframes burst {
+  0% { opacity: 0; transform: translate(0, 0) scale(.5); }
+  12% { opacity: 1; }
+  70% { opacity: .85; }
+  100% { opacity: 0; transform: translate(var(--spark-x), var(--spark-y)) scale(.2); }
+}
+
+.overlay[data-reduced-motion] .burst { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .burst { display: none; }
+  .spark { animation: none; }
+}

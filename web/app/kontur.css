@@ -1,0 +1,579 @@
+/* Approved Pen R3 utility surfaces. Legacy selectors retain data/control seams. */
+:root{--canvas:#F5F5F7;--nav:#FFFFFF;--surface:#FFFFFF;--surface-strong:#F0F0F2;--text:#1D1D1F;--muted:#68686D;--muted-light:#86868B;--border:#DADADD;--accent:#0066CC;--accent-soft:#E8F2FC;--success:#197A4A;--danger:#B4232F;--warning:#8A5A00;--radius-control:12px;--radius-panel:16px;--sidebar-width:270px;--font-sans:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--font-mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--control-motion:140ms;--panel-motion:220ms}
+html[data-theme="dark"]{--canvas:#161617;--nav:#1C1C1E;--surface:#1C1C1E;--surface-strong:#2C2C2E;--text:#F5F5F7;--muted:#A1A1A6;--muted-light:#86868B;--border:#38383B;--accent:#64A8FF;--accent-soft:#142A42;--success:#71D99D;--danger:#FF7B88;--warning:#F2C45E;color-scheme:dark}
+html[data-theme="light"]{color-scheme:light}
+body{background:var(--canvas);font-size:14px}
+button,a,input,textarea,select{font-family:var(--font-sans)}
+button{cursor:pointer}button:disabled{cursor:default;opacity:.45}
+h1,h2,h3,p{overflow-wrap:break-word}h1{font-weight:600;letter-spacing:-.025em}
+.kontur-app-shell{display:grid;grid-template-columns:minmax(0,1fr) 0;background:var(--canvas);transition:grid-template-columns var(--panel-motion) ease;height:100dvh;overflow:hidden}
+.kontur-app-shell.has-right-panel:not(.is-compact){grid-template-columns:minmax(0,1fr) var(--sidebar-width)}
+.kontur-app-shell .app-main{min-width:0;display:flex;flex-direction:column;border-radius:0;background:var(--canvas);height:100%;overflow:hidden}
+.kontur-topbar{height:60px;min-height:60px;display:flex;align-items:center;gap:12px;padding:0 20px;background:var(--surface);border-bottom:1px solid var(--border);z-index:25}
+.kontur-brand{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--text)}
+.kontur-brand-mark{display:grid;place-items:center;background:#0066CC;color:#FFF;width:32px;height:32px;border-radius:10px;font-size:16px;font-weight:650}
+.kontur-topbar-spacer{flex:1}.icon-button{background:var(--surface-strong);width:44px;height:44px;border-radius:12px;flex-shrink:0;transition:background var(--control-motion)}
+.icon-button.compact{width:44px;height:44px}.icon-button:hover{background:var(--accent-soft)}
+.kontur-right-panel{width:var(--sidebar-width);min-width:0;height:100%;overflow:hidden;background:var(--nav);border-left:1px solid var(--border);visibility:hidden;opacity:0;pointer-events:none;transition:opacity var(--panel-motion) ease}
+.kontur-right-panel.is-visible{visibility:visible;opacity:1;pointer-events:auto}
+.kontur-navigation-content,.kontur-assistant-host{height:100%;min-height:0}
+.kontur-navigation-content[hidden],.kontur-assistant-host[hidden]{display:none}
+.kontur-app-shell .primary-sidebar{position:relative;transform:none!important;inset:auto;width:100%;height:100%;border:0;background:var(--nav);padding:16px 12px;flex:none}
+.sidebar-top{display:none}.primary-nav{gap:4px}.nav-item{height:44px;padding:0 12px;border-radius:12px;color:var(--text);font-size:13px;font-weight:400}
+.nav-item.is-active{background:var(--accent-soft);color:var(--accent);font-weight:500}
+.nav-item:hover,.project-row:hover,.history-row:hover{background:var(--surface-strong)}
+.primary-sidebar .new-analysis{margin:0 0 12px;min-height:44px;border-radius:12px}
+.sidebar-section-header{padding-top:8px}.section-toggle{color:var(--muted);font-size:11px;letter-spacing:.02em}
+.project-row,.history-row{color:var(--text);min-height:44px;border-radius:10px}
+.primary-sidebar .sidebar-footer{margin-top:auto}.sidebar-footer .nav-item{color:var(--text)}
+.section-action{width:32px;height:32px}.history-actions summary{opacity:1;min-width:28px;height:32px}
+.primary-button,.run-button,.row-open-button,.send-button{background:#0066CC;border:1px solid transparent;color:#FFF;min-height:44px;border-radius:12px;font-size:13px;font-weight:500;padding:0 16px}
+.primary-button:hover,.run-button:hover,.row-open-button:hover,.send-button:hover{background:#0055AE;color:#FFF}
+.outline-button{background:var(--surface-strong);border:1px solid transparent;color:var(--text);min-height:44px;border-radius:12px;font-size:13px;padding:0 14px}
+.outline-button:hover{background:var(--accent-soft)}
+input,select,textarea{color:var(--text)}input:not([type="checkbox"]):not([type="range"]),select{background:var(--surface);border:1px solid var(--border);border-radius:12px;min-height:44px}
+.page-state{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;background:var(--canvas)}
+.page-state h1{font-size:24px}.page-state p{max-width:440px;color:var(--muted);text-align:center;line-height:1.5}
+.demo-banner{background:var(--surface-strong);color:var(--muted);font-size:11px;padding:5px 20px;min-height:24px;border:0;flex-shrink:0}
+.kontur-panel-scrim{position:fixed;inset:60px 0 0;background:rgba(0,0,0,.25);border:0;z-index:40}
+.workspace-page{flex:1;min-height:0;overflow:hidden;background:var(--surface);display:flex;flex-direction:column;padding:0}
+.workspace-grid{min-height:0;flex:1}.task-column{min-width:0;background:var(--surface);border-right:1px solid var(--border)}
+.task-document{padding:20px 22px}.task-document h2{font-size:24px;font-weight:500}.task-kicker{display:none}.statement-body{font-size:16px;line-height:1.5;color:var(--text)}
+.workspace-pane-header,.rail-tabs{background:var(--surface);border-bottom:1px solid var(--border);height:60px;min-height:60px;padding:8px 16px}
+.workspace-rail{background:var(--surface);min-width:0}.workspace-tool-panel{flex:1;min-height:0}.rail-tabs{display:flex;align-items:center;gap:4px}
+.rail-tab{border:0;border-radius:10px;background:var(--surface-strong);color:var(--muted);font-size:13px;min-height:44px;padding:0 14px}
+.rail-tab.is-active{background:var(--surface);color:var(--text);box-shadow:0 0 0 1px var(--border)}
+.code-panel{height:100%;min-height:0;display:flex;flex-direction:column;background:#1C1C1E;color:#F5F5F7}
+.panel-toolbar{height:54px;min-height:54px;background:var(--surface);color:var(--text);padding:5px 16px}
+.language-label{font-size:12px}.run-toolbar{background:var(--surface);border-top:1px solid var(--border);color:var(--text);min-height:54px;padding:5px 16px}
+.output-panel{background:#161617;color:#F5F5F7;border:1px solid #38383B;min-height:110px;margin:0;border-radius:0;padding:14px 16px}
+.output-header,.output-empty{color:#A1A1A6}.output-content{color:#F5F5F7;font-size:14px;line-height:1.5}.output-status.failed,.output-status.timed_out{color:#FF7B88}
+.code-editor{background:#1C1C1E}.code-editor textarea{font-family:var(--font-mono);font-size:14px;line-height:1.5;background:transparent;color:#F5F5F7}
+.code-line-numbers,.line-numbers{color:#A1A1A6}
+.panel-error{background:#FCEAED;color:#B4232F;border-radius:10px;margin:8px 12px;padding:10px 12px;font-size:12px}
+html[data-theme="dark"] .panel-error{background:#42252C;color:#FF7B88}
+.kontur-assistant-pane{height:100%;min-height:0;display:flex;flex-direction:column;background:var(--surface)}
+.kontur-assistant-header{display:flex;align-items:center;gap:8px;padding:12px;border-bottom:1px solid var(--border);min-height:60px;font-size:14px}
+.kontur-assistant-header strong{font-weight:500;flex:1}.kontur-assistant-pane .conversation-feed{flex:1;overflow:auto;padding:12px;margin:0;min-height:0}
+.kontur-assistant-pane .conversation-feed h3{display:none}.message-row{display:block;margin:0 0 12px}.message-bubble{font-size:13px;line-height:1.5;border:0;border-radius:12px;padding:12px;background:var(--surface-strong);max-width:100%;color:var(--text)}
+.message-row.assistant .message-bubble{background:#E8F2FC;color:#1D1D1F}.message-meta{color:var(--muted);font-size:10px;margin-bottom:6px}.message-model,.assistant-avatar,.learner-avatar{display:none}
+.kontur-assistant-pane .composer{border:0;border-top:1px solid var(--border);background:var(--surface);padding:12px;margin:0;flex-shrink:0}
+.kontur-assistant-pane .composer textarea{font-size:13px}.composer-advanced,.composer-models{display:none}
+html[data-text-size="large"] .statement-body{font-size:20px}.workspace-mobile-switch{background:var(--surface-strong);padding:4px;gap:4px}
+.workspace-mobile-switch button{min-height:44px;border:0;border-radius:10px;color:var(--muted)}.workspace-mobile-switch button[aria-pressed="true"]{background:var(--surface);color:var(--text)}
+@media(max-width:1100px){.kontur-app-shell{grid-template-columns:minmax(0,1fr)}.kontur-right-panel{position:fixed;right:0;top:60px;height:calc(100dvh - 60px);width:min(360px,90vw);z-index:45;box-shadow:-10px 0 32px rgba(0,0,0,.1)}.kontur-topbar{height:56px;min-height:56px;padding:0 12px}.kontur-panel-scrim{top:56px}.kontur-right-panel{top:56px;height:calc(100dvh - 56px)}}
+@media(max-width:650px){.kontur-brand{font-size:14px}.kontur-brand-mark{width:28px;height:28px;border-radius:9px}.kontur-right-panel:has(.kontur-assistant-host:not([hidden])){width:100%;box-shadow:none}.task-document{padding:16px}.workspace-pane-header{font-size:11px}.statement-body{font-size:16px}.rail-tab{min-width:44px}.icon-button.compact{width:44px;height:44px}.workspace-mobile-switch{display:flex}.workspace-mobile-switch button{flex:1}.kontur-assistant-pane .message-bubble{font-size:13px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+html[data-reduced-motion="true"] *,html[data-reduced-motion="true"] *::before,html[data-reduced-motion="true"] *::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+
+/* Approved R3 workspace: condition left, surface center, one right panel. */
+.kontur-toolbar-slot:empty{display:none}
+.kontur-toolbar-slot{min-width:0;flex:1;display:flex;justify-content:flex-end}
+.kontur-workspace-actions{display:flex;align-items:center;gap:4px;min-width:0}
+.kontur-position{color:var(--muted);font-size:13px;white-space:nowrap}
+.kontur-workspace-actions .outline-button{gap:7px}
+.kontur-assistant-host{height:100%;min-height:0}
+.kontur-assistant{height:100%;display:flex;flex-direction:column;min-height:0}
+.kontur-assistant-header{height:60px;flex:none;display:flex;align-items:center;padding:8px 14px;gap:2px;border-bottom:1px solid var(--border)}
+.kontur-assistant-header strong{font-size:15px;flex:1}
+.kontur-ai-context{display:grid;gap:5px;padding:16px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--border)}
+.kontur-chat-scroll{flex:1;min-height:0;overflow:auto;padding:14px}
+.kontur-chat-scroll .conversation-feed{padding:0;border:0;margin:0}
+.kontur-chat-scroll .message{padding:10px 0;gap:0}
+.kontur-chat-scroll .message-body{max-width:100%;width:100%}
+.kontur-chat-scroll .message-body p{font-size:14px;line-height:1.65}
+.kontur-chat-scroll .message.user .message-body{background:var(--accent-soft);padding:12px 14px;border-radius:16px;color:var(--text)}
+.kontur-ai-empty{margin-top:20px}
+.kontur-ai-empty h2{font-size:19px;letter-spacing:-.4px}
+.kontur-ai-empty p{color:var(--muted);font-size:14px;line-height:1.5}
+.kontur-assistant .composer-wrap{padding:12px}
+.kontur-assistant .composer{padding:10px 12px;background:var(--surface);box-shadow:none;border-color:var(--border);border-radius:16px}
+.workspace-pane-header,.rail-tabs{flex-basis:56px;padding:4px 16px;border-bottom:1px solid var(--border);gap:5px}
+.workspace-pane-header{flex-wrap:wrap;white-space:normal;font-size:12px}
+.workspace-pane-header>button:first-of-type{margin-left:auto}
+.workspace-pane-header .pane-expand{display:none}
+.workspace-tool-panel{padding:0;overflow:hidden}
+.task-scroll{padding:20px;scroll-padding-top:16px}
+.task-header h2{font-size:17px;line-height:1.4;letter-spacing:-.2px}
+.task-kicker{font-size:11px}
+.task-document{padding:0;background:transparent;border:none}
+.statement-body{font-size:16px;line-height:1.5;white-space:pre-wrap}
+.kontur-selection-ask{display:block;font-size:12px;margin-bottom:12px;padding:0 10px}
+.task-source-details{margin-top:20px;font-size:12px}
+.task-source-details .revision-meta span{display:none}
+.task-header .mark-control{display:none}
+.task-actions{margin-top:16px}
+.kontur-answer{display:grid;gap:10px;border-top:1px solid var(--border);padding-top:20px;margin-top:24px}
+.kontur-answer label{font-size:13px;font-weight:600}
+.kontur-answer input{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 12px;min-height:44px;color:var(--text);min-width:0;width:100%}
+.kontur-answer>.primary-button{justify-self:start}
+.answer-result{font-size:13px;line-height:1.5}
+.answer-result.correct{color:var(--success)}
+.answer-result.incorrect{color:var(--danger)}
+.answer-result.unavailable{color:var(--muted)}
+.rail-tab{min-height:40px;border-radius:9px;padding:8px 13px;font-size:13px;background:transparent}
+.rail-tab.is-active{background:var(--surface);color:var(--text);box-shadow:0 1px 4px #00000016}
+.rail-tabs{background:var(--surface-muted)}
+.kontur-run{min-height:40px;font-size:13px;padding:8px 12px;gap:7px}
+.workspace-tab-content{min-height:0}
+.code-panel{min-height:0;padding:14px;gap:12px}
+.code-editor{position:relative;flex:1;min-height:180px;border-color:var(--border);border-radius:12px}
+.code-selection-action{position:absolute;right:10px;top:10px;z-index:3;background:var(--surface);font-size:12px}
+.output-panel{margin:0;flex-basis:25%;border-radius:12px;background:var(--surface);color:var(--text);border-color:var(--border)}
+.output-header{min-height:40px;padding:10px 14px;font-size:12px;border-bottom:1px solid var(--border)}
+.output-content{padding:12px 14px;color:var(--text);font-size:14px}
+.output-empty{color:var(--muted);font-size:13px}
+.code-textarea{color:transparent;caret-color:var(--text);background:transparent}
+.code-textarea::placeholder{color:var(--muted)}
+.editor-theme-charcoal .code-editor{background:#1C1C1E;color:#F5F5F7}
+.editor-theme-charcoal .code-textarea{caret-color:#F5F5F7}
+.editor-theme-charcoal .line-numbers{background:#161617;color:#A1A1A6;border-color:#38383A}
+.editor-theme-light .code-editor{background:#FFFFFF;color:#1D1D1F}
+.editor-theme-light .code-textarea{caret-color:#1D1D1F}
+.editor-theme-light .line-numbers{background:#F5F5F7;color:#68686D}
+.editor-theme-light .code-highlight{color:#1D1D1F}
+@media(max-width:790px){
+ .kontur-brand>span:last-child{display:none}
+ .kontur-workspace-actions{gap:0}.kontur-workspace-actions .kontur-ask-button{display:none}
+ .kontur-workspace-actions .icon-button{width:36px;min-width:36px}
+ .kontur-topbar{padding:0 10px;gap:6px}
+ .workspace-mobile-switch{display:flex;margin:8px 12px;background:var(--surface-muted);padding:3px;gap:3px;border-radius:12px}
+ .workspace-mobile-switch button{flex:1;min-height:44px;font-size:13px;border-radius:9px}
+ .workspace-mobile-switch button[aria-pressed=true]{background:var(--surface);color:var(--text)}
+ .rail-tabs{padding:6px 10px}
+ .task-scroll{padding:16px}
+ .code-panel{padding:10px;gap:10px}
+ .kontur-right-panel{width:min(100%,390px)}
+ .kontur-answer{margin-bottom:20px}
+}
+
+/* Theme roles and viewport behavior take precedence over retained legacy chrome. */
+html[data-theme="light"]{--canvas:#F5F5F7;--nav:#FFFFFF;--surface:#FFFFFF;--surface-strong:#F0F0F2;--surface-muted:#F5F5F7;--text:#1D1D1F;--muted:#68686D;--muted-light:#86868B;--border:#DADADD;--accent:#0066CC;--accent-soft:#E8F2FC;--success:#197A4A;--danger:#B4232F;--warning:#8A5A00}
+html[data-theme="dark"]{--surface-muted:#252527}
+.kontur-app-shell .kontur-brand-mark,.kontur-app-shell .primary-button,.kontur-app-shell .send-button{background:#0066CC;color:#FFF;font-weight:500}
+.kontur-app-shell .kontur-brand-mark{font-weight:650}
+.kontur-app-shell .primary-button:hover:not(:disabled){background:#0055AE}
+.kontur-app-shell .code-panel{background:var(--surface-muted);color:var(--text)}
+.kontur-app-shell .code-editor{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.kontur-app-shell .code-editor .code-textarea{color:transparent;caret-color:var(--text);background:transparent;font-size:14px;line-height:1.5}
+.kontur-app-shell .code-highlight{color:var(--text);font-size:14px;line-height:1.5}
+.kontur-app-shell .line-numbers{color:var(--muted);background:var(--surface-muted);border:0;font-size:14px;line-height:1.5}
+.kontur-app-shell .syntax-comment{color:var(--muted)}
+.kontur-app-shell .syntax-keyword{color:#0066CC}
+.kontur-app-shell .syntax-string{color:#197A4A}
+.kontur-app-shell .syntax-literal{color:#925000}
+.kontur-app-shell .editor-theme-charcoal .code-editor{background:#1C1C1E;color:#F5F5F7}
+.kontur-app-shell .editor-theme-charcoal .code-highlight{color:#F5F5F7}
+.kontur-app-shell .editor-theme-charcoal .code-textarea{caret-color:#F5F5F7}
+.kontur-app-shell .editor-theme-charcoal .line-numbers{background:#161617;color:#A1A1A6}
+html[data-theme="dark"] .kontur-app-shell .syntax-keyword{color:#64A8FF}
+html[data-theme="dark"] .kontur-app-shell .syntax-string{color:#71D99D}
+html[data-theme="dark"] .kontur-app-shell .syntax-literal{color:#F2C45E}
+.kontur-app-shell .editor-theme-light .code-editor{background:#FFFFFF;color:#1D1D1F}
+.kontur-app-shell .editor-theme-light .code-highlight{color:#1D1D1F}
+.kontur-app-shell .editor-theme-light .code-textarea{caret-color:#1D1D1F}
+.kontur-app-shell .editor-theme-light .line-numbers{background:#F5F5F7;color:#68686D}
+.kontur-app-shell .output-panel{padding:0;background:var(--surface);color:var(--text)}
+.kontur-app-shell .output-header{background:var(--surface);color:var(--muted)}
+.kontur-app-shell .output-empty{color:var(--muted);padding:12px 14px}
+.kontur-app-shell .workspace-rail .pane-expand{display:none}
+.kontur-topbar-spacer{flex:0}
+.kontur-toolbar-slot:empty+.kontur-topbar-spacer{flex:1}
+
+.kontur-app-shell .syntax-builtin{color:#0066CC}
+html[data-theme="dark"] .kontur-app-shell .syntax-builtin,.kontur-app-shell .editor-theme-charcoal .syntax-builtin{color:#64A8FF}
+.kontur-app-shell .editor-theme-charcoal .syntax-keyword{color:#64A8FF}
+.kontur-app-shell .editor-theme-charcoal .syntax-string{color:#71D99D}
+.kontur-app-shell .editor-theme-charcoal .syntax-literal{color:#F2C45E}
+.kontur-app-shell .editor-theme-light .syntax-keyword,.kontur-app-shell .editor-theme-light .syntax-builtin{color:#0066CC}
+.kontur-app-shell .editor-theme-light .syntax-string{color:#197A4A}
+.kontur-app-shell .editor-theme-light .syntax-literal{color:#925000}
+.kontur-assistant .composer-footer{flex-wrap:nowrap;gap:4px}
+.kontur-assistant .composer-tutor-actions{flex:1;min-width:0}
+.kontur-assistant .composer-tutor-actions button{font-size:11px;padding:0 6px!important;gap:4px;white-space:nowrap}
+.kontur-assistant .composer-tutor-actions button .icon{display:none}
+.kontur-assistant .composer-footer-spacer{display:none}
+.kontur-chat-scroll .conversation-feed>h3{display:none}
+.kontur-chat-scroll .message-bubble{max-width:100%;background:var(--surface-strong);color:var(--text);border-radius:16px}
+.kontur-chat-scroll .message-row{display:block;margin:0 0 14px}
+.kontur-chat-scroll .message-row.assistant .message-bubble{background:transparent}
+.kontur-topbar{flex-shrink:0}
+.kontur-right-panel:focus{outline:none}
+@media(max-width:1100px){.kontur-workspace-actions .icon-button,.kontur-workspace-actions .outline-button,.rail-tab,.kontur-run{min-height:44px;min-width:44px}}
+
+/* R3 shell ownership: navigation is the left rail; the workspace owns its
+   condition/assistant mode on the right, so solving never creates a third
+   workspace column. */
+.kontur-app-shell {
+  grid-template-columns: 0 minmax(0, 1fr) 0;
+}
+.kontur-app-shell.has-navigation:not(.is-compact) {
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) 0;
+}
+.kontur-app-shell.has-assistant-panel:not(.is-workspace) {
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) var(--assistant-width, 360px);
+}
+.kontur-app-shell:not(.has-navigation):not(.is-compact):not(.is-workspace).has-assistant-panel {
+  grid-template-columns: 0 minmax(0, 1fr) var(--assistant-width, 360px);
+}
+.kontur-navigation-rail {
+  grid-column: 1;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  visibility: hidden;
+  width: var(--sidebar-width);
+}
+.kontur-navigation-rail.is-visible {
+  visibility: visible;
+}
+.kontur-navigation-rail .primary-sidebar {
+  height: 100%;
+  overflow: hidden;
+}
+.kontur-app-shell .app-main {
+  grid-column: 2;
+  grid-row: 1;
+}
+.kontur-app-shell .kontur-right-panel {
+  grid-column: 3;
+  grid-row: 1;
+}
+.kontur-app-shell.is-workspace .kontur-right-panel {
+  display: none;
+}
+.kontur-app-shell[data-density="compact"] .kontur-topbar,
+.kontur-app-shell[data-density="compact"] .workspace-pane-header,
+.kontur-app-shell[data-density="compact"] .rail-tabs {
+  min-height: 52px;
+  height: 52px;
+}
+.kontur-app-shell[data-density="compact"] .task-scroll {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.kontur-app-shell[data-density="compact"] .code-panel {
+  gap: 8px;
+  padding: 10px;
+}
+.kontur-app-shell[data-density="compact"] .statement-body {
+  line-height: 1.4;
+}
+
+@media(max-width:1100px) {
+  .kontur-app-shell,
+  .kontur-app-shell.has-navigation:not(.is-compact),
+  .kontur-app-shell.has-assistant-panel:not(.is-workspace),
+  .kontur-app-shell:not(.has-navigation):not(.is-compact):not(.is-workspace).has-assistant-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .kontur-navigation-rail {
+    background: var(--nav);
+    box-shadow: 8px 0 24px rgba(0,0,0,.12);
+    left: 0;
+    position: fixed;
+    top: 0;
+    transform: translateX(-102%);
+    transition: transform var(--panel-motion) ease;
+    width: min(var(--sidebar-width), 88vw);
+    z-index: 50;
+  }
+  .kontur-navigation-rail.is-visible {
+    transform: translateX(0);
+  }
+  .kontur-app-shell .app-main,
+  .kontur-app-shell .kontur-right-panel {
+    grid-column: 1;
+  }
+  .kontur-right-panel {
+    position: fixed;
+    right: 0;
+    top: 56px;
+    height: calc(100dvh - 56px);
+    width: min(360px, 90vw);
+    z-index: 45;
+  }
+  .kontur-panel-scrim {
+    inset: 0;
+    z-index: 40;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .kontur-navigation-rail {
+    transition: none;
+  }
+}
+
+.kontur-app-shell.is-workspace .kontur-brand{display:none}
+.kontur-app-shell.is-workspace .kontur-toolbar-slot{justify-content:stretch}
+.kontur-app-shell.is-workspace .kontur-workspace-actions{width:100%;gap:6px}
+.kontur-position{flex:1;padding-left:4px}
+.kontur-back-catalog{display:inline-flex;align-items:center;gap:6px}
+.task-header{align-items:center;gap:10px;margin-bottom:12px}
+.task-header>div{min-width:0;flex:1}
+.kontur-app-shell .kontur-selection-ask{display:inline-flex;margin:0;padding:0;align-items:center;justify-content:center;font-size:12px;min-width:44px;min-height:44px}
+.kontur-app-shell .output-panel{flex:0 0 110px;min-height:110px;max-height:240px}
+.kontur-app-shell .task-source-details{margin-top:12px}
+@media(max-width:650px){
+ .kontur-back-catalog{min-width:44px;padding:0 8px}
+ .kontur-back-catalog span{display:none}
+ .kontur-app-shell.is-workspace .kontur-workspace-actions{gap:2px}
+}
+
+/* The task surface owns the single right-hand mode switch in a solving
+   workspace. The code/board rail stays on the left and both modes remain in
+   the DOM so drafts and assistant state survive the switch. */
+.kontur-app-shell.is-workspace .workspace-grid {
+  grid-template-columns: minmax(0, var(--tools-share, 62fr)) 8px minmax(0, var(--task-share, 38fr));
+}
+.kontur-app-shell.is-workspace .workspace-rail {
+  border-left: 0;
+  border-right: 1px solid var(--border);
+  grid-column: 1;
+  grid-row: 1;
+}
+.kontur-app-shell.is-workspace .workspace-grid > .divider {
+  grid-column: 2;
+  grid-row: 1;
+}
+.kontur-app-shell.is-workspace .task-column {
+  border-left: 1px solid var(--border);
+  border-right: 0;
+  grid-column: 3;
+  grid-row: 1;
+}
+.task-pane-header {
+  align-items: center;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+.task-mode-switch {
+  align-items: center;
+  background: var(--surface-muted);
+  border-radius: 9px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 2px;
+  padding: 3px;
+}
+.task-mode-button {
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  min-height: 34px;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+.task-mode-button.is-active,
+.task-mode-button:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+.task-mode-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.workspace-task-meta {
+  color: var(--muted);
+  display: inline-flex;
+  gap: 5px;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.task-mode-panel,
+.task-mode-panel > .task-scroll,
+.workspace-task-assistant,
+.workspace-task-assistant > .composer-wrap {
+  min-height: 0;
+}
+.task-mode-panel[hidden],
+.workspace-task-assistant[hidden] {
+  display: none;
+}
+.task-mode-task {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow: hidden;
+}
+.task-mode-task > .task-scroll {
+  flex: 1 1 auto;
+}
+.task-column > [role="tabpanel"] {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+.workspace-task-assistant {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.workspace-task-assistant .kontur-chat-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.workspace-task-assistant .composer-wrap {
+  background: var(--surface);
+  flex: 0 0 auto;
+  padding: 12px;
+}
+.workspace-task-assistant .composer {
+  border-color: var(--border);
+  box-shadow: none;
+}
+.kontur-app-shell .code-editor {
+  --editor-font-size: 14px;
+  --editor-tab-size: 4;
+}
+.kontur-app-shell .code-editor .code-textarea,
+.kontur-app-shell .code-editor .code-highlight,
+.kontur-app-shell .code-editor .line-numbers {
+  font-size: var(--editor-font-size);
+  tab-size: var(--editor-tab-size);
+}
+.kontur-app-shell .code-editor.is-wrapped .code-textarea,
+.kontur-app-shell .code-editor.is-wrapped .code-highlight {
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.kontur-app-shell .code-editor .line-numbers[hidden] {
+  display: none;
+}
+.kontur-app-shell .code-editor:has(.line-numbers[hidden]) {
+  grid-template-columns: minmax(0, 1fr);
+}
+.kontur-app-shell .output-panel {
+  flex-basis: var(--output-height, 160px);
+  min-height: var(--output-height, 160px);
+  max-height: 360px;
+}
+
+/* Keep the outer composer as the focus ring. The textarea itself stays
+   keyboard accessible without the native square blue outline. */
+.kontur-app-shell .composer {
+  border-radius: 16px;
+  min-width: 0;
+}
+.kontur-app-shell .composer:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, .18);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.kontur-app-shell .composer-input {
+  border-radius: 10px;
+  min-width: 0;
+  overflow-y: auto;
+}
+.kontur-app-shell .composer-input:focus-visible {
+  border-radius: 10px;
+  outline: 0;
+}
+.kontur-app-shell .composer-footer {
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+.kontur-app-shell .composer-tutor-actions {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-width: 0;
+}
+.kontur-app-shell .composer-tutor-actions button {
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+}
+.kontur-app-shell .composer-footer-spacer {
+  display: none;
+}
+.kontur-app-shell .composer-footer > .send-button {
+  flex: 0 0 44px;
+  margin-left: auto;
+}
+@media(max-width:520px) {
+  .kontur-app-shell.is-workspace .task-pane-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .kontur-app-shell.is-workspace .workspace-task-meta {
+    flex: 1 1 calc(100% - 130px);
+    min-height: 34px;
+    padding-top: 8px;
+  }
+  .kontur-app-shell .composer-footer {
+    flex-wrap: wrap;
+  }
+  .kontur-app-shell .composer-tutor-actions {
+    flex-basis: calc(100% - 48px);
+  }
+}
+
+@media(max-width:790px) {
+  .kontur-app-shell.is-workspace .workspace-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .kontur-app-shell.is-workspace .workspace-grid > .divider {
+    display: none;
+  }
+  .kontur-app-shell.is-workspace .workspace-rail,
+  .kontur-app-shell.is-workspace .task-column {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .kontur-app-shell.is-workspace .workspace-rail {
+    border-right: 0;
+  }
+  .kontur-app-shell.is-workspace .task-column {
+    border-left: 0;
+  }
+}
+
+.kontur-app-shell .app-main{overflow:auto;scrollbar-width:thin}
+.kontur-app-shell.is-workspace .app-main{overflow:hidden}
+.kontur-topbar{position:sticky;top:0}
+@media(max-height:650px) and (max-width:650px){
+ .kontur-app-shell .code-editor{min-height:120px}
+ .kontur-app-shell .output-panel{flex-basis:80px;min-height:80px}
+}
+
+.kontur-modal-scrim{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#00000045;z-index:100;padding:20px}
+.kontur-modal{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:18px;box-shadow:0 18px 70px #00000025;width:min(440px,100%);max-height:calc(100dvh - 40px);overflow:auto;padding:20px;outline:none}
+.kontur-modal>header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.kontur-modal>header h2{flex:1;font-size:20px;font-weight:600;letter-spacing:-.4px}
+.kontur-modal>p,.kontur-modal>span{font-size:14px;line-height:1.5;color:var(--muted)}
+.kontur-modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+:root{--primary-accent:#0066CC;--primary-hover:#0055AE}.draft-conflict{display:block;max-height:35vh;overflow:auto}.draft-conflict p{margin:0 0 8px}.draft-conflict pre{white-space:pre-wrap;font-family:var(--font-mono);max-height:120px;overflow:auto}.draft-conflict>div{display:flex;gap:8px;flex-wrap:wrap}
+.task-source-link{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:12px;color:var(--muted);font-size:13px}
+.exam-workspace-toolbar{display:flex;align-items:center;gap:8px;width:100%;min-width:0}.exam-toolbar-spacer{flex:1}.exam-workspace-toolbar .exam-timer{padding:0;background:transparent;border:0;color:var(--text);font-size:14px;font-variant-numeric:tabular-nums;min-width:80px}.exam-workspace-toolbar .exam-timer strong{font-size:16px}.exam-workspace-toolbar .outline-button{min-height:44px;font-size:13px;white-space:nowrap}@media(max-width:650px){.exam-catalog-link,.exam-workspace-toolbar>.icon-button{display:none!important}.exam-workspace-toolbar{gap:4px}.exam-workspace-toolbar .outline-button{padding:0 8px}.exam-workspace-toolbar .exam-timer{min-width:68px}.exam-ai-toggle{max-width:100px}}
+
+/* A narrow right pane keeps its controls on reachable wrapped rows. */
+.kontur-app-shell.is-workspace .task-pane-header { flex-basis: auto; flex-wrap: wrap; min-height: 64px; padding: 8px 12px; gap: 6px; }
+.kontur-app-shell.is-workspace .workspace-task-meta { flex: 1 1 140px; min-width: 120px; }
+
+.kontur-app-shell.is-workspace .task-pane-header, .kontur-app-shell.is-workspace .workspace-rail > .rail-tabs { height: auto; flex-shrink: 0; }
+.kontur-app-shell.is-workspace .workspace-pane-header .pane-expand { display: inline-flex; }
+
+.kontur-app-shell.is-workspace .workspace-grid.focus-task, .kontur-app-shell.is-workspace .workspace-grid.focus-tools { grid-template-columns: minmax(0, 1fr); }
+.kontur-app-shell.is-workspace .workspace-grid.focus-task > .task-column { grid-column: 1; }
+
+.kontur-app-shell.is-workspace .task-column { container-type: inline-size; }
+@container (max-width: 440px) {
+ .task-pane-header { display: grid; grid-template-columns: minmax(0, 1fr) 44px 44px; }
+ .task-pane-header .task-mode-switch { grid-column: 1; grid-row: 1; justify-self: start; }
+ .task-pane-header .workspace-task-meta { grid-column: 1 / -1; grid-row: 2; min-width: 0; }
+ .task-pane-header > button { grid-column: 2; grid-row: 1; margin-left: 0; }
+ .task-pane-header > .pane-expand { grid-column: 3; margin-left: 0; }
+}
